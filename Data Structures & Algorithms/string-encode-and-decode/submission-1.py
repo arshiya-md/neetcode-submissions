@@ -1,0 +1,37 @@
+class Solution:
+
+    def encode(self, strs: List[str]) -> str:
+        res = ''
+        for s in strs:
+            res += str(len(s)) + '#' + s
+        return res
+
+    def decode(self, s: str) -> List[str]:
+        i = 0
+        res = []
+        while i < len(s):
+            length = ''
+            while s[i] != '#':
+                length += s[i]
+                i += 1             
+            length = int(length)
+            start = i + 1
+            end = start +  length
+            res.append(s[start : end])
+            i = end
+        return res
+
+
+# ['a2#c','fg','g', 'kl']
+# res = "3,2,1,2#abcfggkl"
+# sizes = [3,2,1,2]
+# ------------
+# s = "3,2,1,2#abcfggkl"
+# sizes = []
+# res = []
+# i = 0
+
+# curr = 3
+# i
+# 4#a2#c2#fg#1g#2kl
+# 199#a2#c2fg1g2kl
